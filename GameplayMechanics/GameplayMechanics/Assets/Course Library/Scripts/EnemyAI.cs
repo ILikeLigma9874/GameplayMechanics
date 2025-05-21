@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (transform.position.y > (int)-2.03)
             enemyRb.AddForce((Player.transform.position - transform.position).normalized * Speed);
-        if (transform.position.y == (int)-3.5)
-            Destroy(Enemy);
+        if (transform.position.y < (int)-20.5)
+            Destroy(gameObject);
     }
 }
