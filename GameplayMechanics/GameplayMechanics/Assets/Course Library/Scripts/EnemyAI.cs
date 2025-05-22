@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
-        Player = GameObject.Find("Player");
+        Player = GameObject.Find("Player");;
     }
 
     // Update is called once per frame
