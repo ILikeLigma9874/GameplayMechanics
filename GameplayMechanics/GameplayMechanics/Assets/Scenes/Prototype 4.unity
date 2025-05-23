@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 1407210547}
   - component: {fileID: 1407210546}
   m_Layer: 0
-  m_Name: Spawn Manager
+  m_Name: Enemy Spawn Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,6 +538,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 4220626755622386563, guid: ce2eb1a862f1c9640a07ce56a98f29b2, type: 3}
+  Player: {fileID: 1669822472}
+  Difficulty: 10
 --- !u!4 &1407210547
 Transform:
   m_ObjectHideFlags: 0
@@ -679,7 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 3.75
   FocalPoint: {fileID: 981204576}
-  Player: {fileID: 0}
+  Player: {fileID: 1669822472}
 --- !u!1001 &7305732181041295649
 PrefabInstance:
   m_ObjectHideFlags: 0

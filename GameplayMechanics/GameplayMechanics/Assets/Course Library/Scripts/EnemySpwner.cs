@@ -1,23 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class EnemySpwner : MonoBehaviour
 {
     public GameObject Enemy;
     public GameObject Player;
     public float Difficulty;
+    private int Spawnamount;
 
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<EnemySpwner>().enabled = true;
-        Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
-        InvokeRepeating("RaiseDifficulty", 3.0f, 1.5f);
-        InvokeRepeating("Spawn", 2.0f, Difficulty);
+        InvokeRepeating("Spawn", 5.0f, 7.5f);
     }
 
     // Update is called once per frame
@@ -29,11 +23,25 @@ public class EnemySpwner : MonoBehaviour
 
     public void Spawn()
     {
-        Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
+            Spawnamount = Random.Range(1, 5);
+            if (Spawnamount >= 1 && Spawnamount <= 2)
+            {
+                Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
+            }
+            if (Spawnamount >= 3 && Spawnamount <= 4)
+            {
+                Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
+                Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
+            }
+            if (Spawnamount == 5)
+            {
+                Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
+                Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
+                Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
+                Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
+                Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
+                Instantiate(Enemy, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Enemy.transform.rotation);
+        }
     }
 
-    private void RaiseDifficulty()
-    {
-        Difficulty -= (int)0.5;
-    }
-}
+        }
