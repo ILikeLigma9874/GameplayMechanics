@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PowerupActivate : MonoBehaviour
 {
+    // Variables
+    private bool PowerupActive;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        PowerupActive = false;
     }
 
     // Update is called once per frame
@@ -18,6 +21,9 @@ public class PowerupActivate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (GameObject.Find("Player"))
+        {
+            PowerupActive = true;
+        }
     }
 }

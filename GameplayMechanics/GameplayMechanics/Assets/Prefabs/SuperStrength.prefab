@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5396787771351734839}
   - component: {fileID: 5396787769826699644}
   - component: {fileID: 5396787769826699643}
+  - component: {fileID: -5788009647256631263}
   m_Layer: 0
   m_Name: SuperStrength
   m_TagString: Untagged
@@ -109,3 +110,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 250
+--- !u!114 &-5788009647256631263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396787771353464457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cff8e483df73ab4a82c1aa3b70e72d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
