@@ -24,4 +24,20 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < (int)-20.5)
             Destroy(gameObject);
     }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (GameObject.Find("SuperStrength").GetComponent<PowerupActivate>().PowerupActive == true)
+        {
+            StartCoroutine(WaitAndDo((int)0.15f));
+        }
+    }
+
+
+    IEnumerator WaitAndDo(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log(Speed = (int)3.75);
+    }
 }

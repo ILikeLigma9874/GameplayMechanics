@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerupActivate : MonoBehaviour
+public class PowerupSpawner : MonoBehaviour
 {
     // Variables
-    public bool PowerupActive;
+    public GameObject Powerup;
 
     // Start is called before the first frame update
     void Start()
     {
-        PowerupActive = false;
+        InvokeRepeating("Spawn", 5.0f, 20.0f);
     }
 
     // Update is called once per frame
@@ -19,11 +19,9 @@ public class PowerupActivate : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    void Spawn()
     {
-        if (GameObject.Find("Player"))
-        {
-            PowerupActive = true;
-        }
+        Instantiate(Powerup, new Vector3(Random.Range(-12, 12), 0, Random.Range(-10, 10)), Powerup.transform.rotation);
     }
 }
