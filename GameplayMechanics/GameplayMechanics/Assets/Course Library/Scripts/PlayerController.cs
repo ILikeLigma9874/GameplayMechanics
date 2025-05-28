@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,11 @@ public class PlayerController : MonoBehaviour
     Rigidbody playerRb;
     public GameObject FocalPoint;
     public GameObject Player;
+    private bool Powered;
+    public GameObject Enemy;
+    public GameObject Powerup;
+    public PhysicMaterial Normal;
+    public PhysicMaterial Powerful;
 
     // Start is called before the first frame update
     void Start()
@@ -23,19 +29,27 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(FocalPoint.transform.forward * forwardinput * Speed);
         if (transform.position.y < (int)-20.5)
             Destroy(gameObject);
+        if (Powered == false)
+        {
+            collision.material = Normal;
+        }
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (GameObject.Find("SuperStrength").GetComponent<PowerupActivate>().PowerupActive == true)
+        if (collision.gameObject == Powerup)
         {
-            StartCoroutine(WaitAndDo((int)0.15f));
+            if (collision.gameObject == Enemy)
+            {
+                StartCoroutine(PoweredHit((int)0.15f));
+            }
+            
         }
     }
 
 
-    IEnumerator WaitAndDo(float waitTime)
+    IEnumerator PoweredHit(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         Debug.Log(Speed = (int)3.75);
