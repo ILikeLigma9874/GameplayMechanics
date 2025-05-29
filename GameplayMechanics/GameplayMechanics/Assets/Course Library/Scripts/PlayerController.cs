@@ -9,16 +9,18 @@ public class PlayerController : MonoBehaviour
     Rigidbody playerRb;
     public GameObject FocalPoint;
     public GameObject Player;
-    private bool Powered;
     public GameObject Enemy;
     public GameObject Powerup;
     public PhysicMaterial Normal;
     public PhysicMaterial Powerful;
+    public SphereCollider col;
+    public float Timer;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        Timer = 0.0f;
     }
 
     // Update is called once per frame
@@ -29,29 +31,20 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(FocalPoint.transform.forward * forwardinput * Speed);
         if (transform.position.y < (int)-20.5)
             Destroy(gameObject);
-        if (Powered == false)
+        if (Timer <= 7.5f && Timer > 0.0f)
         {
-            collision.material = Normal;
-        }
-    }
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == Powerup)
-        {
-            if (collision.gameObject == Enemy)
+            Timer -= Time.deltaTime;
+            if (Timer <= 0.0f)
             {
-                StartCoroutine(PoweredHit((int)0.15f));
+                col.material = Normal;
             }
-            
         }
     }
 
 
-    IEnumerator PoweredHit(float waitTime)
+    public void PowerUp()
     {
-        yield return new WaitForSeconds(waitTime);
-        Debug.Log(Speed = (int)3.75);
+        col.material = Powerful;
+        Timer = 7.5f;
     }
 }
